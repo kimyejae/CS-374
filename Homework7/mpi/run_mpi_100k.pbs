@@ -1,0 +1,21 @@
+#!/bin/bash
+# # # # # # # # 
+
+# MPI specify resources needed in number of nodes and processes per node
+#PBS -l nodes=1:ppn=1
+
+# Give the job a unique-to-you name in Torque
+#PBS -N ajs94_mpi_100k_1_1
+
+# Optional: If you want to be notified, tell Torque how/when...
+#    -m  accepts up to all three control flags 'a','b','e', where:
+#        a = mail is sent when the job is aborted
+#        b = mail is sent when the job begins execution
+#        e = mail is sent when the job finishes execution
+#  and be sure to use your email address!
+#PBS -m abe -M ajs94@students.calvin.edu
+
+# Change to the working directory and execute spmd
+cd $PBS_O_WORKDIR
+mpiexec ./mpiArraySum /home/cs/374/exercises/07/100k.txt
+
